@@ -1,0 +1,30 @@
+[gd_scene load_steps=3 format=3 uid="uid://un82kylssc3t"]
+
+[ext_resource type="Script" path="res://scritps/score_coin.gd" id="1_1dgnq"]
+[ext_resource type="Texture2D" uid="uid://cn002pfiv38f6" path="res://Assets_PixelAdventure/personaje/Golden Skull/01.png" id="1_xhk3i"]
+
+[node name="Node2D" type="CanvasLayer"]
+script = ExtResource("1_1dgnq")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+offset_left = 107.0
+offset_top = 8.0
+offset_right = 224.0
+offset_bottom = 80.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+offset_left = 1.0
+offset_top = -1.0
+offset_right = 151.0
+offset_bottom = 60.0
+
+[node name="Label" type="Label" parent="HBoxContainer"]
+layout_mode = 2
+auto_translate = false
+text = "0
+"
+horizontal_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("1_xhk3i")

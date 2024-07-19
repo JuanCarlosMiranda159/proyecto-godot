@@ -224,9 +224,3 @@ position = Vector2(2963, 337)
 
 [node name="Node2D8" parent="." instance=ExtResource("11_gu8ax")]
 position = Vector2(3003, 252)
-
-[node name="moneda" parent="." instance=ExtResource("9_1y8gw")]
-position = Vector2(2406, 223)
-
-[node name="moneda2" parent="." instance=ExtResource("9_1y8gw")]
-position = Vector2(1756, 147)

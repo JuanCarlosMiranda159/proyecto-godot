@@ -1,0 +1,56 @@
+[gd_scene load_steps=13 format=3 uid="uid://bafoauhah3q52"]
+
+[ext_resource type="Script" path="res://scritps/moneda2d.gd" id="1_c1bwi"]
+[ext_resource type="Texture2D" uid="uid://8preovc6ib3c" path="res://Assets_PixelAdventure/personaje/Golden Skull/05.png" id="2_cd6lx"]
+[ext_resource type="Texture2D" uid="uid://cn002pfiv38f6" path="res://Assets_PixelAdventure/personaje/Golden Skull/01.png" id="3_kusq0"]
+[ext_resource type="Texture2D" uid="uid://di18yfurunl3o" path="res://Assets_PixelAdventure/personaje/Golden Skull/02.png" id="4_ir4kx"]
+[ext_resource type="Texture2D" uid="uid://ng4ocbp8rltv" path="res://Assets_PixelAdventure/personaje/Golden Skull/03.png" id="5_331t8"]
+[ext_resource type="Texture2D" uid="uid://b5lwrhjqp08um" path="res://Assets_PixelAdventure/personaje/Golden Skull/04.png" id="6_q07cs"]
+[ext_resource type="Texture2D" uid="uid://lph744xg1wlc" path="res://Assets_PixelAdventure/personaje/Golden Skull/06.png" id="7_esvx0"]
+[ext_resource type="Texture2D" uid="uid://coj25kgw8511y" path="res://Assets_PixelAdventure/personaje/Golden Skull/07.png" id="8_pkd5d"]
+[ext_resource type="Texture2D" uid="uid://cj184avximbtv" path="res://Assets_PixelAdventure/personaje/Golden Skull/08.png" id="9_5k7g1"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_j8t1d"]
+radius = 8.0
+
+[sub_resource type="Animation" id="Animation_t0oy7"]
+resource_name = "moneda"
+length = 0.8
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("3_kusq0"), ExtResource("4_ir4kx"), ExtResource("5_331t8"), ExtResource("6_q07cs"), ExtResource("2_cd6lx"), ExtResource("7_esvx0"), ExtResource("8_pkd5d"), ExtResource("9_5k7g1"), ExtResource("3_kusq0")]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_w2wel"]
+_data = {
+"moneda": SubResource("Animation_t0oy7")
+}
+
+[node name="moneda" type="Node2D"]
+script = ExtResource("1_c1bwi")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(2, -5)
+texture = ExtResource("2_cd6lx")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(3, 0)
+shape = SubResource("CircleShape2D_j8t1d")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_w2wel")
+}
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

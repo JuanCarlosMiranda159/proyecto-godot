@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://dybp3hvrbyq2q"]
+[gd_scene load_steps=14 format=3 uid="uid://dybp3hvrbyq2q"]
 
 [ext_resource type="Script" path="res://scritps/player.gd" id="1_snlfj"]
 [ext_resource type="Texture2D" uid="uid://i3alob01qqt4" path="res://Assets_PixelAdventure/personaje/saltando.1-removebg-preview.png" id="1_uxtpt"]
@@ -66,15 +66,18 @@ _data = {
 }
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_heom0"]
-radius = 18.0278
+radius = 22.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_fv8hh"]
+radius = 26.0192
 
 [node name="player" type="CharacterBody2D"]
 script = ExtResource("1_snlfj")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(46.9745, 144)
-scale = Vector2(0.0634871, 0.07408)
-texture = ExtResource("2_13jil")
+position = Vector2(42.5, 144)
+scale = Vector2(0.0943396, 0.106061)
+texture = ExtResource("1_uxtpt")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -82,13 +85,22 @@ libraries = {
 }
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(46, 142)
+position = Vector2(42, 142)
 shape = SubResource("CircleShape2D_heom0")
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(583, 407)
+position = Vector2(571, 570)
 scale = Vector2(1.01021, 1.00595)
-ignore_rotation = false
 limit_left = -1000000
-limit_top = -100
-limit_bottom = 100
+limit_top = -10000
+limit_bottom = 1000
+
+[node name="hit" type="Area2D" parent="."]
+position = Vector2(-3, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hit"]
+position = Vector2(45, 142)
+shape = SubResource("CircleShape2D_fv8hh")
+
+[connection signal="area_entered" from="hit" to="." method="_on_hit_area_entered"]
+[connection signal="body_entered" from="hit" to="." method="_on_hit_body_entered"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://b7www0pmnibhf"]
+[gd_scene load_steps=13 format=3 uid="uid://b7www0pmnibhf"]
 
 [ext_resource type="Texture2D" uid="uid://cbmb5cipyhb2u" path="res://Assets_PixelAdventure/Terrain/Terrain (16x16).png" id="1_gc6eu"]
 [ext_resource type="PackedScene" uid="uid://dybp3hvrbyq2q" path="res://scenas/player.tscn" id="2_30ypl"]
@@ -10,7 +10,6 @@
 [ext_resource type="PackedScene" uid="uid://be8peawertg0f" path="res://scenas/enemy.tscn" id="8_15mv8"]
 [ext_resource type="PackedScene" uid="uid://bafoauhah3q52" path="res://scenas/moneda2d.tscn" id="9_1y8gw"]
 [ext_resource type="PackedScene" uid="uid://un82kylssc3t" path="res://scenas/score_coin.tscn" id="10_8mf1l"]
-[ext_resource type="PackedScene" uid="uid://bf8excawytg2b" path="res://scenas/copa.tscn" id="11_gu8ax"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_t4srd"]
 texture = ExtResource("1_gc6eu")
@@ -192,41 +191,10 @@ position = Vector2(1004.5, 192)
 scale = Vector2(2.39514, 1.75)
 texture = ExtResource("7_gan4e")
 
+[node name="enemy" parent="." instance=ExtResource("8_15mv8")]
+position = Vector2(605, 443)
+
 [node name="Node2D" parent="." instance=ExtResource("9_1y8gw")]
 position = Vector2(330, 445)
 
-[node name="Node2D2" parent="." instance=ExtResource("10_8mf1l")]
-
-[node name="Node2D3" type="Node2D" parent="."]
-
-[node name="enemy" parent="Node2D3" instance=ExtResource("8_15mv8")]
-position = Vector2(603, 439)
-
-[node name="Node2D4" type="Node2D" parent="."]
-
-[node name="enemy" parent="Node2D4" instance=ExtResource("8_15mv8")]
-position = Vector2(1331, 435)
-
-[node name="Node2D5" type="Node2D" parent="."]
-
-[node name="enemy" parent="Node2D5" instance=ExtResource("8_15mv8")]
-position = Vector2(1750, 350)
-
-[node name="Node2D6" type="Node2D" parent="."]
-
-[node name="enemy" parent="." instance=ExtResource("8_15mv8")]
-position = Vector2(2305, 369)
-
-[node name="Node2D7" type="Node2D" parent="."]
-
-[node name="enemy" parent="Node2D7" instance=ExtResource("8_15mv8")]
-position = Vector2(2963, 337)
-
-[node name="Node2D8" parent="." instance=ExtResource("11_gu8ax")]
-position = Vector2(3003, 252)
-
-[node name="moneda" parent="." instance=ExtResource("9_1y8gw")]
-position = Vector2(2406, 223)
-
-[node name="moneda2" parent="." instance=ExtResource("9_1y8gw")]
-position = Vector2(1756, 147)
+[node name="score_coin" parent="." instance=ExtResource("10_8mf1l")]

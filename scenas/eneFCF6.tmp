@@ -1,0 +1,50 @@
+[gd_scene load_steps=7 format=3 uid="uid://be8peawertg0f"]
+
+[ext_resource type="Texture2D" uid="uid://b21ejdqjcqag7" path="res://Assets_PixelAdventure/personaje/enemy/enemigo.2-removebg-preview.png" id="1_ra6cf"]
+[ext_resource type="Script" path="res://scritps/enemy.gd" id="1_uenw5"]
+[ext_resource type="Texture2D" uid="uid://c1tyo4vl3gwku" path="res://Assets_PixelAdventure/personaje/enemy/enemigo.1-removebg-preview.png" id="2_rcudq"]
+
+[sub_resource type="Animation" id="Animation_yvvjj"]
+resource_name = "run"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("2_rcudq"), ExtResource("1_ra6cf"), ExtResource("2_rcudq"), ExtResource("1_ra6cf"), ExtResource("2_rcudq"), ExtResource("1_ra6cf")]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_k8a8v"]
+_data = {
+"run": SubResource("Animation_yvvjj")
+}
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_1subo"]
+radius = 11.0
+
+[node name="enemy" type="CharacterBody2D"]
+script = ExtResource("1_uenw5")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(5, -4)
+scale = Vector2(0.164063, 0.198795)
+texture = ExtResource("2_rcudq")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_k8a8v")
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(3, -3)
+shape = SubResource("CapsuleShape2D_1subo")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[connection signal="child_entered_tree" from="Sprite2D" to="." method="_on_sprite_2d_child_entered_tree"]
